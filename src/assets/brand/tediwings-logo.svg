@@ -1,0 +1,15 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brand Icon -->
+  <rect x="6" y="8" width="44" height="44" rx="10" fill="#F6F8FB"/>
+  <!-- Left Wing - Deep / Electric Blue -->
+  <path d="M15 38L23 20L27 29L20 38H15Z" fill="#062B78"/>
+  <path d="M23 38L29 23L33 31L27 38H23Z" fill="#0868E8"/>
+  <!-- Right Flight Wing - Orange / Amber / Gold -->
+  <path d="M30 38L36 22L40 29L34.5 38H30Z" fill="#FF5A00"/>
+  <path d="M37 38L42 26L43.5 29L39.5 38H37Z" fill="#FFAA00"/>
+  <circle cx="42.5" cy="22" r="2.5" fill="#FFD21F"/>
+  
+  <!-- Brand Typography -->
+  <text x="62" y="35" font-family="'Poppins', sans-serif" font-size="22" font-weight="700" fill="#062B78">TeDi<tspan fill="#0868E8">Wings</tspan></text>
+  <text x="63" y="47" font-family="'Poppins', sans-serif" font-size="9.5" font-weight="600" letter-spacing="2.2" fill="#7D8796">TECHNOLOGIES</text>
+</svg>

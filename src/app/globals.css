@@ -1,26 +1,379 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 1. Primary Color Palette derived from TeDiWings Technologies Logo */
+  --color-black: #050505;
+
+  --color-deep-blue: #061A63;
+  --color-electric-blue: #075DFF;
+  --color-cyan: #00C8FF;
+
+  --color-orange: #FF5A00;
+  --color-bright-orange: #FF7A00;
+  --color-golden-yellow: #FFC928;
+
+  --color-white: #FFFFFF;
+  --color-silver: #D7DCE3;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #5B6472;
+
+  --color-background: #FFFFFF;
+  --color-background-soft: #F7F8FA;
+
+  --color-border: #E5E7EB;
+  --color-border-dark: rgba(255, 255, 255, 0.10);
+
+  /* 2. Controlled Gradient System */
+  --grad-blue: linear-gradient(135deg, #061A63, #075DFF, #00C8FF);
+  --grad-orange: linear-gradient(135deg, #FF5A00, #FF7A00, #FFC928);
+  --grad-tech: linear-gradient(135deg, #075DFF, #00C8FF);
+  --grad-dark-atmosphere: radial-gradient(circle at 20% 20%, rgba(0, 200, 255, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 70%, rgba(255, 122, 0, 0.10), transparent 35%),
+    #050505;
+
+  /* Legacy brand variable mappings for total component compatibility */
+  --brand-blue: var(--color-electric-blue);
+  --brand-blue-deep: var(--color-deep-blue);
+  --brand-blue-electric: var(--color-cyan);
+  --brand-cyan: var(--color-cyan);
+  --brand-orange: var(--color-orange);
+  --brand-orange-bright: var(--color-bright-orange);
+  --brand-amber: var(--color-golden-yellow);
+  --brand-gold: var(--color-golden-yellow);
+  --brand-black: var(--color-black);
+  --brand-dark: #07112B;
+  --brand-dark-blue: var(--color-deep-blue);
+  --brand-white: var(--color-white);
+  --brand-silver: var(--color-silver);
+  --brand-muted: var(--color-text-secondary);
+  --brand-body: var(--color-text-secondary);
+  --brand-light: var(--color-background-soft);
+  --brand-border: var(--color-border);
+  --brand-border-dark: var(--color-border-dark);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --font-poppins: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
+  --font-montserrat: var(--font-montserrat), 'Montserrat', system-ui, -apple-system, sans-serif;
+  --color-brand-blue: var(--color-electric-blue);
+  --color-brand-blue-deep: var(--color-deep-blue);
+  --color-brand-blue-electric: var(--color-cyan);
+  --color-brand-cyan: var(--color-cyan);
+  --color-brand-orange: var(--color-orange);
+  --color-brand-orange-bright: var(--color-bright-orange);
+  --color-brand-amber: var(--color-golden-yellow);
+  --color-brand-gold: var(--color-golden-yellow);
+  --color-brand-black: var(--color-black);
+  --color-brand-dark: #07112B;
+  --color-brand-dark-blue: var(--color-deep-blue);
+  --color-brand-silver: var(--color-silver);
+  --color-brand-muted: var(--color-text-secondary);
+  --color-brand-body: var(--color-text-secondary);
+  --color-brand-light: var(--color-background-soft);
+  --color-brand-border: var(--color-border);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global Base */
+html {
+  font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-poppins), 'Poppins', system-ui, -apple-system, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Global Container Specification */
+.site-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 32px;
+}
+
+@media (max-width: 1024px) {
+  .site-container {
+    padding-inline: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-container {
+    padding-inline: 20px;
+  }
+}
+
+/* Section Spacing Specification */
+.section-spacing {
+  padding-block: 96px;
+}
+
+.section-spacing-feature {
+  padding-block: 112px;
+}
+
+@media (max-width: 768px) {
+  .section-spacing,
+  .section-spacing-feature {
+    padding-block: 64px;
+  }
+}
+
+/* Typography Scales - Calibrated for Precision Hierarchy */
+.hero-heading {
+  font-size: clamp(32px, 3.8vw, 48px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.18;
+    letter-spacing: -0.5px;
+  }
+}
+
+.section-heading {
+  font-size: clamp(24px, 2.6vw, 38px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.6px;
+}
+
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: clamp(22px, 6vw, 28px);
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+  }
+}
+
+.subheading {
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.project-heading {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.4px;
+}
+
+.body-text {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  max-width: 680px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0;
+}
+
+.body-text-intro {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  max-width: 680px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0;
+}
+
+@media (max-width: 768px) {
+  .body-text,
+  .body-text-intro {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}
+
+.small-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Button System */
+.btn-primary {
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: var(--color-electric-blue);
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-cyan);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px -4px rgba(7, 93, 255, 0.35);
+}
+
+.btn-secondary {
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: var(--color-deep-blue);
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-electric-blue);
+  color: var(--color-electric-blue);
+  background-color: var(--color-background-soft);
+  box-shadow: 0 4px 16px -2px rgba(6, 26, 99, 0.06);
+}
+
+/* Strategic Orange CTA Button */
+.btn-orange {
+  font-size: 14px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background-color: #FF6A00;
+  color: #FFFFFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-orange:hover {
+  background-color: var(--color-golden-yellow);
+  color: var(--color-black);
+  box-shadow: 0 8px 24px -4px rgba(255, 90, 0, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Premium Card System */
+.premium-card {
+  border-radius: 18px;
+  padding: 28px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 20px -2px rgba(6, 26, 99, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.premium-card:hover {
+  border-color: var(--color-cyan);
+  box-shadow: 0 12px 30px -4px rgba(6, 26, 99, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Technology Tags */
+.tech-tag {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background-color: rgba(6, 26, 99, 0.04);
+  color: var(--color-deep-blue);
+  border: 1px solid var(--color-border);
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  background-color: rgba(7, 93, 255, 0.08);
+  color: var(--color-electric-blue);
+  border-color: rgba(0, 200, 255, 0.4);
+}
+
+/* Visual Viewport Placeholder */
+.visual-placeholder {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #F8FAFD 0%, #EEF4FA 100%);
+  border: 1px dashed rgba(6, 26, 99, 0.15);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.visual-placeholder:hover {
+  border-color: var(--color-cyan);
+}
+
+/* Grid & Geometric Accents */
+.tech-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(6, 26, 99, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(6, 26, 99, 0.03) 1px, transparent 1px);
+}
+
+.tech-grid-pattern-dark {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Active Nav Underline Indicator (Clean 20px bar) */
+.nav-indicator-bar {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2.5px;
+  border-radius: 9999px;
+  background: var(--grad-tech);
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
